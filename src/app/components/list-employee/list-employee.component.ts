@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CrudService }       from 'src/app/service/crud.service';
 
 @Component({
   selector: 'app-list-employee',
@@ -7,9 +8,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListEmployeeComponent implements OnInit {
 
-  constructor() { }
+  employees:any;
+
+  constructor(
+    private crud_service:CrudService
+  ) { }
 
   ngOnInit(): void {
+    this.crud_service.Get_employees().subscribe(response => {
+      this.employees = response;
+    });
+  }
+
+  clear_log(id:any,index_:any) {
+      console.log(id);
+      console.log(index_);
+
+      if(window.confirm("sure you want to delete employee ?")) {
+        this.crud_service.Delete_Employee(id).subscribe((response) => {
+          this.employees.splice(index_, 1);
+        });
+      }
+        
   }
 
 }

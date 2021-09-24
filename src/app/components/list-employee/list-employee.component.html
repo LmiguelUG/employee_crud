@@ -1,8 +1,9 @@
 <div class="card">
     <div class="card-header">
-        Employees
+        <a class="btn btn-success" routerLink="/add-employee/">Add employee</a>
     </div>
     <div class="card-body">
+        <h2>Employees</h2>
         <table class="table">
             <thead>
                 <tr>
@@ -13,15 +14,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>27</td>
-                    <td>Luis Urbina</td>
-                    <td>luism3872@gmail.com</td>
+
+                <tr *ngFor = "let employee of employees; let index_=index">
+                    <td>{{ employee.id }}</td>
+                    <td>{{ employee.name }}</td>
+                    <td>{{ employee.email }}</td>
                     <td>
-                        <a class="btn btn-primary" routerLink="/edit-employee/1">Edit </a> | 
-                        <a class="btn btn-warning" routerLink="">Delete</a> 
+                        <a class="btn btn-primary" routerLink="/edit-employee/{{ employee.id }}">Edit</a> |
+                        <a class="btn btn-danger"  (click)="clear_log(employee.id, index_)">Delete</a> 
                     </td>
                 </tr>
+
             </tbody>
         </table>
         

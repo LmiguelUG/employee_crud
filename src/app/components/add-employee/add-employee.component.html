@@ -1,19 +1,26 @@
 
+<!-- cabecera de componente  -->
 <div class="card-header">
     Employee insertion
 </div>
+
+<!-- cuerpo del componente -->
 <div class="card-body">
-    <form [formGroup]="employeeForm" (ngSubmit)="sendData()">
+    <!-- formulacion de creación de empleado -->
+    <form [formGroup]="employee_form" (ngSubmit)="sendData()">
+        <!-- Nombre -->
         <div class="mb-3">
             <label for="_name" class="form-label">Name:</label>
             <input type="text" class="form-control" name="_name" formControlName="name" id="" aria-describedby="helpId" placeholder="insert first name and first surname">
         </div>
 
+        <!-- Correo Electronico -->
         <div class="mb-3">
             <label for="_email" class="form-label">Email:</label>
             <input type="text" class="form-control" name="_email" formControlName="email" id="" aria-describedby="helpId" placeholder="insert your email address">
         </div>
 
+        <!-- Botones de 'editar' y 'cancelar' -->
         <div class="btn-group" role="group" aria-label="">
             <button type="submit" class="btn btn-success">Add</button>  
             <button type="button" class="btn btn-warning">Cancel</button>
